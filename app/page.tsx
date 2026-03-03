@@ -368,7 +368,7 @@ export default function Home() {
               {savedRecipes.map((item) => (
                 <motion.div 
                   key={item.id} 
-                  whileHover={{ y: -8, shadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }} 
+                  whileHover={{ y: -8, boxshadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }} 
                   onClick={() => { setRecipe(item.content); setFoodType(item.food_type); window.scrollTo({ top: 500, behavior: 'smooth' }); }} 
                   className="group p-8 bg-white rounded-[2.5rem] border border-slate-100 cursor-pointer hover:border-orange-200 transition-all flex flex-col h-full"
                 >
