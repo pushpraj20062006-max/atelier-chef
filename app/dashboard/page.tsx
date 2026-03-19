@@ -42,6 +42,9 @@ export default function Dashboard() {
 
     return (
       <main className="p-4 md:p-10 flex flex-col gap-6 max-w-2xl mx-auto w-full" aria-label="Dashboard Main Content">
+        <nav className="mb-4 flex justify-end">
+          <a href="/profile" className="text-orange-500 font-bold underline hover:text-orange-700" aria-label="Go to Profile">Profile</a>
+        </nav>
         <h1 className="text-3xl md:text-4xl font-black text-orange-500 mb-2 text-center" tabIndex={0}>Dashboard Loaded Successfully</h1>
 
         {/* 1. INPUT AREA */}
