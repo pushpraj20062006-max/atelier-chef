@@ -20,7 +20,11 @@ const getModelInstance = () => {
   return genAI.getGenerativeModel({ model: MODEL_NAME });
 };
 
-export const getRecipe = async (ingredients: string[], foodType: string, allergies: string) => {
+export const getRecipe = async (
+  ingredients: string[],
+  foodType: string,
+  allergies: string
+): Promise<string> => {
   try {
     const model = getModelInstance();
     
