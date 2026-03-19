@@ -9,8 +9,11 @@ export default function Dashboard() {
   const [chatHistory, setChatHistory] = useState<{role: string, text: string}[]>([]);
   const [chatSession, setChatSession] = useState<any>(null);
 
-  // ⚠️ PASTE YOUR KEY HERE
-  const API_KEY = "YOUR_GEMINI_API_KEY"; 
+  // Use Gemini API key from environment variable
+  const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY as string;
+  if (!API_KEY) {
+    throw new Error("Gemini API key is missing. Please set NEXT_PUBLIC_GEMINI_API_KEY in your .env.local file.");
+  }
   const genAI = new GoogleGenerativeAI(API_KEY);
 
   const generateRecipe = async () => {

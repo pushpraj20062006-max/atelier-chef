@@ -1,7 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Paste your actual values inside the quotes below
-const supabaseUrl = "https://xcclraquassuyenxnpem.supabase.co"; 
-const supabaseAnonKey = "sb_publishable_6h7pL15dcS7zIo-V8esAnA_WyxSxEnK"; 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+	throw new Error("Supabase environment variables are missing. Please check your .env.local file.");
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

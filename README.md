@@ -1,5 +1,8 @@
 👨‍🍳 Atelier Chef: AI-Powered Culinary Studio
-Atelier Chef is a premium, full-stack web application that transforms the cooking experience. By leveraging the Google Gemini AI engine and Supabase, it allows users to generate gourmet recipes from available ingredients, analyze nutritional data, and maintain a persistent personal culinary archive.
+
+Atelier Chef is a premium, full-stack web application that transforms the cooking experience. Powered by Google Gemini AI and Supabase, it enables users to generate gourmet recipes from available ingredients, analyze nutritional data, chat with an AI chef, and maintain a persistent personal culinary archive—all with a beautiful, modern UI.
+
+**Security Note:** All API keys and URLs are now managed via environment variables in `.env.local` for best practices and security.
 
 🌟 Key Features
 🪄 Intelligent Recipe Composition: Generates complete, formatted recipes based on ingredients, dietary restrictions, and "Culinary Intent" (Flash, Healthy, Fancy, Comfort, or Sweets).
@@ -31,13 +34,15 @@ git clone https://github.com/YOUR_USERNAME/atelier-chef.git
 cd atelier-chef
 npm install
 
-2. Environment Setup
-Create a .env.local file in the root directory and add your secret keys:
 
-Code snippet
+2. Environment Setup
+Create a `.env.local` file in the root directory and add your secret keys (never commit real secrets to version control):
+
+```
 NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_key
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
 3. Database Configuration
 To enable the Favorites and History features, run the following SQL in your Supabase SQL Editor:
@@ -55,8 +60,22 @@ CREATE TABLE IF NOT EXISTS recipes (
 );
 
 4. Run Development Server
-Bash
+
+```bash
 npm run dev
+```
+
+---
+
+## Improvements & Best Practices
+
+- All sensitive keys and URLs are now loaded from environment variables.
+- Site metadata and SEO have been improved for professionalism.
+- UI/UX is modern and responsive.
+- Error handling and user feedback are enhanced.
+- Codebase follows Next.js and React best practices.
+
+For questions or contributions, please open an issue or pull request.
 
 Open http://localhost:3000 to view your Atelier Chef.
 
