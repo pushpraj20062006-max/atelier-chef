@@ -40,47 +40,57 @@ export default function Dashboard() {
     setChatHistory(prev => [...prev, { role: 'chef', text: result.response.text() }]);
   };
 
-  return (
-    <div style={{ padding: '50px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      <h1 style={{ color: 'orange' }}>Dashboard Loaded Successfully</h1>
-      
-      {/* 1. INPUT AREA */}
-      <section style={{ border: '2px solid black', padding: '20px' }}>
-        <h2>Step 1: Ingredients</h2>
-        <input 
-          placeholder="Type ingredients..." 
-          onChange={(e) => setItems(e.target.value)} 
-          style={{ width: '100%', padding: '10px' }}
-        />
-        <button onClick={generateRecipe} style={{ marginTop: '10px', padding: '10px', background: 'orange' }}>
-          Generate Recipe
-        </button>
-      </section>
+    return (
+      <div className="p-4 md:p-10 flex flex-col gap-6 max-w-2xl mx-auto w-full">
+        <h1 className="text-3xl md:text-4xl font-black text-orange-500 mb-2 text-center">Dashboard Loaded Successfully</h1>
 
-      {/* 2. RECIPE AREA */}
-      <section style={{ border: '2px solid blue', padding: '20px' }}>
-        <h2>Step 2: Recipe</h2>
-        <div style={{ whiteSpace: 'pre-wrap', background: '#f0f0f0', padding: '10px' }}>
-          {recipe || "Recipe will show here..."}
-        </div>
-      </section>
+        {/* 1. INPUT AREA */}
+        <section className="border-2 border-black rounded-2xl p-6 bg-white shadow-md">
+          <h2 className="text-xl font-bold mb-4">Step 1: Ingredients</h2>
+          <input
+            placeholder="Type ingredients..."
+            onChange={(e) => setItems(e.target.value)}
+            className="w-full p-3 rounded-xl border border-slate-200 focus:border-orange-400 outline-none mb-4"
+          />
+          <button
+            onClick={generateRecipe}
+            className="w-full bg-orange-500 text-white py-3 rounded-xl font-bold shadow hover:bg-orange-600 transition-all"
+          >
+            Generate Recipe
+          </button>
+        </section>
 
-      {/* 3. CHATBOX AREA (RED BORDER SO YOU CAN'T MISS IT) */}
-      <section style={{ border: '5px solid red', padding: '20px' }}>
-        <h2>Step 3: CHATBOX (This is it!)</h2>
-        <div style={{ height: '200px', overflowY: 'scroll', background: 'white', border: '1px solid #ccc', marginBottom: '10px' }}>
-          {chatHistory.map((m, i) => (
-            <p key={i}><b>{m.role}:</b> {m.text}</p>
-          ))}
-        </div>
-        <input 
-          value={chatInput} 
-          onChange={(e) => setChatInput(e.target.value)} 
-          placeholder="Ask the chef something..." 
-          style={{ width: '80%', padding: '10px' }}
-        />
-        <button onClick={askChef} style={{ width: '15%', padding: '10px' }}>Ask</button>
-      </section>
-    </div>
-  );
+        {/* 2. RECIPE AREA */}
+        <section className="border-2 border-blue-400 rounded-2xl p-6 bg-blue-50 shadow-md">
+          <h2 className="text-xl font-bold mb-4 text-blue-700">Step 2: Recipe</h2>
+          <div className="whitespace-pre-wrap bg-white p-4 rounded-xl min-h-[80px] text-slate-800">
+            {recipe || "Recipe will show here..."}
+          </div>
+        </section>
+
+        {/* 3. CHATBOX AREA */}
+        <section className="border-4 border-red-400 rounded-2xl p-6 bg-white shadow-md">
+          <h2 className="text-xl font-bold mb-4 text-red-500">Step 3: Chatbox</h2>
+          <div className="h-48 overflow-y-scroll bg-slate-50 border border-slate-200 rounded-lg mb-4 p-3">
+            {chatHistory.map((m, i) => (
+              <p key={i}><b>{m.role}:</b> {m.text}</p>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <input
+              value={chatInput}
+              onChange={(e) => setChatInput(e.target.value)}
+              placeholder="Ask the chef something..."
+              className="flex-1 p-3 rounded-xl border border-slate-200 focus:border-orange-400 outline-none"
+            />
+            <button
+              onClick={askChef}
+              className="bg-orange-500 text-white px-6 py-3 rounded-xl font-bold shadow hover:bg-orange-600 transition-all"
+            >
+              Ask
+            </button>
+          </div>
+        </section>
+      </div>
+    );
 }
